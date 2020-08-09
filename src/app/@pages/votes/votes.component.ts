@@ -10,16 +10,18 @@ import { ApiService } from '../../@core/services/api.service';
 export class VotesComponent implements OnInit {
 
   characters: Character[] = [];
+  loading: boolean;
 
   constructor( private apiService: ApiService ) { }
 
   ngOnInit(): void {
 
+    this.loading = true;
     this.apiService.getCharacters( true ).subscribe( (data: any) => {
 
       this.characters = data;
       console.log(this.characters);
-
+      this.loading = false;
 
     });
 
@@ -36,7 +38,19 @@ export class VotesComponent implements OnInit {
       console.log(data.changeVotes);
       this.characters = data.changeVotes;
 
-    })
+    });
+
+  }
+
+  addVote( character: string ): void {
+
+    this.apiService.addVote(character).subscribe( ({data}) => {
+
+      console.log(data);
+
+
+
+    });
 
   }
 

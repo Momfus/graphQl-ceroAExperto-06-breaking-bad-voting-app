@@ -4,6 +4,7 @@ import { listaPersonajes } from '../operations/query';
 import { changeVotes } from '../operations/subscription';
 
 import { map } from 'rxjs/operators';
+import { addVoteOperation } from '../operations/mutation';
 
 
 @Injectable({
@@ -43,5 +44,20 @@ export class ApiService {
     });
 
   }
+
+  // Añadir un nuevo voto
+  addVote( character: string ): any {
+
+    return this.apollo.mutate({
+
+      mutation: addVoteOperation,
+      variables: {
+        character
+      }
+
+    });
+
+  }
+
 
 }

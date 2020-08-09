@@ -40,7 +40,7 @@ export class BarChartComponent implements OnInit, OnChanges {
   public colors = [
 
     {
-      backgroundColor: '#1fc1de'
+      backgroundColor: '#17a2b8'
     }
 
   ];
