@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { listaPersonajes } from '../operations/query';
+import { changeVotes } from '../operations/subscription';
 
 import { map } from 'rxjs/operators';
 
@@ -29,6 +30,17 @@ export class ApiService {
       return result.data.characters;
 
     }));
+
+  }
+
+  // Obtener los cambios en tiempo real de los votos
+  changeVotesListener(): any {
+
+    return this.apollo.subscribe({
+
+      query: changeVotes
+
+    });
 
   }
 

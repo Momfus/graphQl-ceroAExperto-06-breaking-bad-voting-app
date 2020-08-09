@@ -1,6 +1,5 @@
 import gql from 'graphql-tag';
 
-
 export const listaPersonajes = gql`
 
   query listaPersonajes($skip: Boolean!) {

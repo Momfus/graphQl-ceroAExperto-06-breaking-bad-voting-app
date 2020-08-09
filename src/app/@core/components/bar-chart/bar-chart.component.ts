@@ -50,9 +50,10 @@ export class BarChartComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: any): void {
+  ngOnChanges(changes: any): void { // Cuando hay cambios en el componente
 
     console.log(this.characters);
+    this.characters = changes.characters.currentValue;
     this.loadChartData();
 
   }
@@ -76,28 +77,6 @@ export class BarChartComponent implements OnInit, OnChanges {
 
     });
 
-  }
-
-  // events
-  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public randomize(): void {
-    // Only Change 3 values
-    const data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    this.barChartData[0].data = data;
   }
 
 }

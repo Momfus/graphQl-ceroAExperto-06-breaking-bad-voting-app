@@ -23,6 +23,22 @@ export class VotesComponent implements OnInit {
 
     });
 
+    // Escuchar los cambios del grapqhl
+    this.changeVotes();
+
   }
+
+  // Suscribirse al cambio de votos
+  changeVotes(): void {
+
+    this.apiService.changeVotesListener().subscribe( ({data}) => {
+
+      console.log(data.changeVotes);
+      this.characters = data.changeVotes;
+
+    })
+
+  }
+
 
 }
