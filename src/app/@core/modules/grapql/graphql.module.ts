@@ -30,7 +30,7 @@ export class GraphqlModule {
     // Configurar la url principal con el link
     const httpLink = new HttpLink( httpClient ).create({
 
-      uri: 'http://localhost:5012//graphql'
+      uri: 'http://localhost:5012/graphql'
 
     });
 
@@ -38,7 +38,7 @@ export class GraphqlModule {
     // Configurar el websocket con el link
     const subscriptionLink = new WebSocketLink({
 
-      uri: 'ws://localhost:5012//graphql',
+      uri: 'ws://localhost:5012/graphql',
       options: {
 
         reconnect: true

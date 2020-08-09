@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ApiService } from '../../@core/services/api.service';
+import { Character } from '../../@core/interfaces/character.interface';
+
 
 @Component({
   selector: 'app-characters',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharactersComponent implements OnInit {
 
-  constructor() { }
+  characters: Character[] = [];
+
+  constructor( private api: ApiService ) { }
 
   ngOnInit(): void {
+
+    this.api.getCharacters( false ).subscribe( (data: any) => {
+
+      this.characters  = data;
+
+    });
+
   }
 
 }
